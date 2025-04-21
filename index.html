@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Highlight.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css"
+    />
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <nav>
+          <a href="#length">Length</a>
+          <a href="#map">Map</a>
+          <a href="#filter">Filter</a>
+          <a href="#push">Push</a>
+          <a href="#join">Join</a>
+        </nav>
+      </div>
+
+      <div class="main-content">
+        <div id="length">
+          <h2>Length</h2>
+          <p>
+            A length tulajdonsággal meg tudjuk határozni egy tömb vagy string
+            (szöveg) hosszát. Például a for ciklus használatában is jelentős
+            szerepe van. Gyakran használjuk feltételeknél, ahol meg akarjuk
+            vizsgálni, hogy a tömbnek vannak-e elemei, illetve hogy mennyi eleme
+            van. Mindig integer (egész szám) értéket kapunk.
+          </p>
+          <h3>Példa</h3>
+          <div class="code-container">
+            <pre><code class="language-javascript">const gyümölcsök = ['alma', 'körte', 'szilva', 'barack', 'narancs'];
+
+              //Megkapjuk a tömb hosszát
+              console.log(gyümölcsök.length);
+              
+              //feltétellel
+              if(gyümölcsök.length > 0){
+                console.log(`A tömb nem üres. A tömmbnek ${gyümölcsök.length} eleme van.`);
+              } else {
+                console.log('A tömb üres.');
+              }</code>
+              <p>Eredmény: A tömb nem üres. A tömmbnek 5 eleme van. </p>
+            </pre>
+          </div>
+        </div>
+      </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
