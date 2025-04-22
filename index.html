@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Highlight.js CSS -->
     <link
@@ -13,47 +14,182 @@
     />
     <!-- Highlight.js JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div class="container">
-      <div class="sidebar">
-        <nav>
-          <a href="#length">Length</a>
-          <a href="#map">Map</a>
-          <a href="#filter">Filter</a>
-          <a href="#push">Push</a>
-          <a href="#join">Join</a>
+  <body class="bg-white overflow-x-hidden">
+    <!-- Mobile menu button -->
+    <div
+      class="md:hidden fixed top-0 left-0 z-50 w-full bg-gray-100 shadow-md p-4"
+    >
+      <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col md:flex-row overflow-hidden">
+      <!-- Sidebar - fixed position -->
+      <div
+        id="sidebar"
+        class="hidden md:block fixed md:top-0 pt-16 md:pt-5 bg-aliceblue w-full md:w-64 h-screen p-5 transform transition-transform duration-300 ease-in-out z-40 overflow-y-auto overflow-x-hidden"
+      >
+        <nav class="flex flex-col">
+          <a
+            href="#length"
+            class="text-gray-700 no-underline py-2 px-4 mb-1 rounded hover:bg-blue-500 hover:text-white transition duration-200"
+            >Length</a
+          >
+          <a
+            href="#map"
+            class="text-gray-700 no-underline py-2 px-4 mb-1 rounded hover:bg-blue-500 hover:text-white transition duration-200"
+            >Map</a
+          >
+          <a
+            href="#filter"
+            class="text-gray-700 no-underline py-2 px-4 mb-1 rounded hover:bg-blue-500 hover:text-white transition duration-200"
+            >Filter</a
+          >
+          <a
+            href="#push"
+            class="text-gray-700 no-underline py-2 px-4 mb-1 rounded hover:bg-blue-500 hover:text-white transition duration-200"
+            >Push</a
+          >
+          <a
+            href="#join"
+            class="text-gray-700 no-underline py-2 px-4 mb-1 rounded hover:bg-blue-500 hover:text-white transition duration-200"
+            >Join</a
+          >
         </nav>
       </div>
 
-      <div class="main-content">
-        <div id="length">
-          <h2>Length</h2>
-          <p>
+      <!-- Main content with offset for sidebar -->
+      <div class="w-full md:ml-64 p-4 md:p-6 mt-14 md:mt-0 overflow-x-hidden">
+        <!-- LENGTH -->
+        <div id="length" class="mb-10 pt-16 md:pt-4 md:mt-0">
+          <h2 class="text-2xl font-bold mb-3">Length</h2>
+          <p class="mb-4 break-words">
             A length tulajdonsággal meg tudjuk határozni egy tömb vagy string
             (szöveg) hosszát. Például a for ciklus használatában is jelentős
             szerepe van. Gyakran használjuk feltételeknél, ahol meg akarjuk
             vizsgálni, hogy a tömbnek vannak-e elemei, illetve hogy mennyi eleme
             van. Mindig integer (egész szám) értéket kapunk.
           </p>
-          <h3>Példa</h3>
-          <div class="code-container">
-            <pre><code class="language-javascript">const gyümölcsök = ['alma', 'körte', 'szilva', 'barack', 'narancs'];
+          <h3 class="text-xl font-semibold mb-2">Példa</h3>
+          <div class="code-container py-4">
+            <pre
+              class="w-full"
+            ><code class="language-javascript">const gyümölcsök = ['alma', 'körte', 'szilva', 'barack', 'narancs'];
 
-              //Megkapjuk a tömb hosszát
-              console.log(gyümölcsök.length);
-              
-              //feltétellel
-              if(gyümölcsök.length > 0){
-                console.log(`A tömb nem üres. A tömmbnek ${gyümölcsök.length} eleme van.`);
-              } else {
-                console.log('A tömb üres.');
-              }</code>
-              <p>Eredmény: A tömb nem üres. A tömmbnek 5 eleme van. </p>
-            </pre>
+//Megkapjuk a tömb hosszát
+console.log(gyümölcsök.length);
+
+//feltétellel
+if(gyümölcsök.length > 0){
+  console.log(`A tömb nem üres. A tömmbnek ${gyümölcsök.length} eleme van.`);
+} else {
+  console.log('A tömb üres.');
+}</code></pre>
+            <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
+            <p class="text-white break-words pl-4">
+              A tömb nem üres. A tömmbnek 5 eleme van.
+            </p>
+          </div>
+        </div>
+        <!-- MAP -->
+        <div id="map" class="mb-10 pt-16 md:pt-4 md:mt-0">
+          <h2 class="text-2xl font-bold mb-3">Map</h2>
+          <p class="mb-4 break-words">
+            A map() az egyik leggyakrabban használt metódus. Sokszor alkalmazzuk
+            tömbök esetében, hogy végig iteráljunk rajtuk és hozzáférjünk az
+            elemekhez (minden elemen alkalmazunk egy fügvényt), illetve azok
+            indexeihez, amivel a későbbiekben könnyebben dolgozhatunk. Szinte
+            nélkülözhetetlen API hívások esetén, amikor is JSON formátumban
+            kapjuk meg az adatokat, amiket objektumokká alakítunk. Minden
+            esetben egy új tömböt kapunk vissza.
+          </p>
+          <h3 class="text-xl font-semibold">Példa:</h3>
+          <div class="code-container p-4">
+            <pre
+              class="w-full"
+            ><code class="language-javascript">const posts = [
+  {
+    id: 1,
+    title: 'Javascript alapjai',
+    body: 'Pellentesque scelerisque, est id vehicula bibendum, est tellus rutrum justo, et dignissim libero sapien et erat.',
+  },
+  {
+    id: 2,
+    title: 'PHP keretrendszerek',
+    body: 'Vestibulum interdum venenatis nunc et sodales. Nunc et urna non ipsum tempor faucibus. Pellentesque nec neque luctus, vulputate lorem eget, aliquam nisl. Phasellus aliquet pharetra finibus.',
+  },
+];
+
+posts.map((post) =>
+console.log('id:', post.id, 'title:', post.title, 'body:', post.body)
+);</code></pre>
+            <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
+            <p class="text-white break-words pl-4">
+              id: 1 title: Javascript alapjai body: Pellentesque scelerisque,
+              est id vehicula bibendum, est tellus rutrum justo, et dignissim
+              libero sapien et erat. id: 2 title: PHP keretrendszerek body:
+              Vestibulum interdum venenatis nunc et sodales. Nunc et urna non
+              ipsum tempor faucibus. Pellentesque nec neque luctus, vulputate
+              lorem eget, aliquam nisl. Phasellus aliquet pharetra finibus.
+            </p>
+          </div>
+        </div>
+        <div id="filter" class="mb-10 pt-16 md:pt-4 md:mt-0">
+          <h2 class="text-2xl font-bold mb-3">Filter</h2>
+          <p class="mb-4 break-words">
+            A filter() metódust arra használjuk, hogy egy tömbből kiválogassuk
+            azokat az elemeket, amelyek megfelelnek egy megadott feltételnek.
+            Általa elérhetjük a tömb egyes elemeit és azok indexeit is. Gyakran
+            használom egy elem törlésére, ahol az id alapján beazonosítom az
+            elemet és annak kivételével jelenítem meg a tömböt (A példában is ez
+            látható). Hasonlóan a map()-hez, itt is egy új tömböt kapunk vissza.
+          </p>
+          <h3 class="text-xl font-semibold">Példa:</h3>
+          <div class="code-container p-4">
+            <pre
+              class="w-full"
+            ><code class="language-javascript">const posts = [
+  {
+    id: 1,
+    title: 'Javascript alapjai',
+    body: 'Pellentesque scelerisque, est id vehicula bibendum, est tellus rutrum justo, et dignissim libero sapien et erat.',
+  },
+  {
+    id: 2,
+    title: 'PHP keretrendszerek',
+    body: 'Vestibulum interdum venenatis nunc et sodales. Nunc et urna non ipsum tempor faucibus. Pellentesque nec neque luctus, vulputate lorem eget, aliquam nisl. Phasellus aliquet pharetra finibus.',
+  },
+];
+
+const selectedPost = posts.filter((post) => post.id !== 1);
+console.log(selectedPost);
+);</code></pre>
+            <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
+            <p class="text-white break-words pl-4">
+              Array(1) 0 : {id: 2, title: 'PHP keretrendszerek', body:
+              'Vestibulum interdum venenatis nunc et sodales. Nun…aliquam nisl.
+              Phasellus aliquet pharetra finibus.'} length : 1
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
     <script src="main.js"></script>
   </body>
