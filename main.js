@@ -4,16 +4,46 @@ document.addEventListener('DOMContentLoaded', (event) => {
     hljs.highlightBlock(block);
   });
 });
+// Menü toggle funkció
+const menuToggle = document.querySelector('#menu-toggle');
+const sidebar = document.querySelector('#sidebar');
+
+menuToggle.addEventListener('click', function () {
+  sidebar.classList.toggle('hidden');
+});
+
+// Menü linkek eseménykezelője minden eszközön
+const menuLinks = document.querySelectorAll('#sidebar a');
+menuLinks.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    // Mobilon a menü bezárása
+    if (window.innerWidth < 768) {
+      sidebar.classList.add('hidden');
+    }
+
+    // Minden esetben sima görgetés a célhoz
+    e.preventDefault();
+    const targetId = link.getAttribute('data-target');
+
+    const targetElement = document.querySelector(`#${targetId}`);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 60, // Korrigálás a fejléc miatt
+        behavior: 'smooth',
+      });
+    }
+  });
+});
 
 //-----Length-----
-const gyümölcsök = ['alma', 'körte', 'szilva', 'barack', 'narancs'];
+const fruits = ['alma', 'körte', 'szilva', 'barack', 'narancs'];
 
 //Megkapjuk a tömb hosszát
-console.log(gyümölcsök.length);
+console.log(fruits.length);
 
 //feltétellel
-if (gyümölcsök.length > 0) {
-  console.log(`A tömb nem üres. A tömbnek ${gyümölcsök.length} eleme van.`);
+if (fruits.length > 0) {
+  console.log(`A tömb nem üres. A tömbnek ${fruits.length} eleme van.`);
 } else {
   console.log('A tömb üres.');
 }
