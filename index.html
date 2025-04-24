@@ -91,7 +91,7 @@
             vizsgálni, hogy a tömbnek vannak-e elemei, illetve hogy mennyi eleme
             van. Mindig integer (egész szám) értéket kapunk.
           </p>
-          <h3 class="text-xl font-semibold mb-2">Példa</h3>
+          <h3 class="text-xl font-semibold mb-2">Példa:</h3>
           <div class="code-container py-4">
             <pre
               class="w-full"
@@ -118,8 +118,7 @@ if(fruits.length > 0){
           <p class="mb-4 break-words">
             A map() az egyik leggyakrabban használt metódus. Sokszor alkalmazzuk
             tömbök esetében, hogy végig iteráljunk rajtuk és hozzáférjünk az
-            elemekhez (minden elemen alkalmazunk egy fügvényt), illetve azok
-            indexeihez, amivel a későbbiekben könnyebben dolgozhatunk. Szinte
+            elemekhez, illetve azok indexeihez, amivel a későbbiekben könnyebben dolgozhatunk. Szinte
             nélkülözhetetlen API hívások esetén, amikor is JSON formátumban
             kapjuk meg az adatokat, amiket objektumokká alakítunk. Minden
             esetben egy új tömböt kapunk vissza.
@@ -148,11 +147,12 @@ console.log('id:', post.id, 'title:', post.title, 'body:', post.body)
             <p class="text-white break-words pl-4">
               id: 1 title: Javascript alapjai body: Pellentesque scelerisque,
               est id vehicula bibendum, est tellus rutrum justo, et dignissim
-              libero sapien et erat. id: 2 title: PHP keretrendszerek body:
+              libero sapien et erat.</p>
+              <p class="text-white break-words pl-4">id: 2 title: PHP keretrendszerek body:
               Vestibulum interdum venenatis nunc et sodales. Nunc et urna non
               ipsum tempor faucibus. Pellentesque nec neque luctus, vulputate
-              lorem eget, aliquam nisl. Phasellus aliquet pharetra finibus.
-            </p>
+              lorem eget, aliquam nisl. Phasellus aliquet pharetra finibus.</p> 
+            
           </div>
         </div>
         <div id="filter" class="mb-10 pt-16 md:pt-4 md:mt-0">
@@ -184,12 +184,60 @@ console.log('id:', post.id, 'title:', post.title, 'body:', post.body)
 
 const selectedPost = posts.filter((post) => post.id !== 1);
 console.log(selectedPost);
-);</code></pre>
+</code></pre>
             <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
             <p class="text-white break-words pl-4">
               Array(1) 0 : {id: 2, title: 'PHP keretrendszerek', body:
               'Vestibulum interdum venenatis nunc et sodales. Nun…aliquam nisl.
               Phasellus aliquet pharetra finibus.'} length : 1
+            </p>
+          </div>
+        </div>
+        <div id="push" class="mb-10 pt-16 md:pt-4 md:mt-0">
+          <h2 class="text-2xl font-bold mb-3">Push</h2>
+          <p class="mb-4 break-words">
+            A pus() metódussal egy tömbhöz tudunk új elemet, illetve elemeket
+            csatolni. Hasznus például egy CRUD művletnél, amikor egy meglévő
+            tömböt bővítünk. Ez az elem a tömb végére kerül. A metódus
+            az eredeti tömböt módosítja, ami azt jelenti, hogy ha egy új
+            változóban definiálnánk, akkor csak a tömb hosszával térne vissza.
+          </p>
+          <h3 class="text-xl font-semibold">Példa:</h3>
+          <div class="code-container p-4">
+            <pre
+              class="w-full"
+            ><code class="language-javascript">const names = ['Attila', 'Gábor', 'Éva'];
+
+names.push('Sándor', 'Méátyás');
+console.log(names);
+////
+const allName = names.push('Albert');
+console.log(allName);
+</code></pre>
+            <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
+            <p class="text-white break-words pl-4">
+              A names tömb: ['Attila', 'Gábor', 'Éva', 'Sándor', 'Méátyás'] 
+              <p class="text-white break-words pl-4">Az allName: 6</p>
+            </p>
+          </div>
+        </div>
+        <div id="join" class="mb-10 pt-16 md:pt-4 md:mt-0">
+          <h2 class="text-2xl font-bold mb-3">Join</h2>
+          <p class="mb-4 break-words">
+            A join() metódussal összefűzhetjük egy tömb elemeit egyetlen karakterlánccá. Meghatározhatjuk a szeparátort, ami az elemek közé kerül. Amennyiben nem adunk meg semmit, abban az esetben az alapértelmezett érték a vessző. Hasznos lehet, ha például dinamikusan akarunk url-t meghatározni. Minden esetben egy string lesz a visszatérési érték.
+          </p>
+          <h3 class="text-xl font-semibold">Példa:</h3>
+          <div class="code-container p-4">
+            <pre
+              class="w-full"
+            ><code class="language-javascript">const urlData = ['api', 'post', 5];
+
+const url = urlData.join('/');
+console.log('url:', url);
+</code></pre>
+            <h4 class="text-white p-4 font-semibold text-lg">Kimenet:</h4>
+            <p class="text-white break-words pl-4">
+              Az url: 'api/post/5'
             </p>
           </div>
         </div>

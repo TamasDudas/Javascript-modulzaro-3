@@ -69,3 +69,16 @@ posts.map((post) =>
 
 const selectedPost = posts.filter((post) => post.id !== 1);
 console.log(selectedPost);
+
+//---Push----
+const names = ['Attila', 'Gábor', 'Éva'];
+names.push('Sándor', 'Méátyás');
+console.log(names);
+
+const allName = names.push('Albert');
+console.log('allName:', allName);
+
+//---Join----
+const urlData = ['api', 'post', 5];
+const url = urlData.join('/');
+console.log('url:', url);
