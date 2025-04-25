@@ -120,8 +120,8 @@ if(fruits.length > 0){
             tömbök esetében, hogy végig iteráljunk rajtuk és hozzáférjünk az
             elemekhez, illetve azok indexeihez, amivel a későbbiekben könnyebben dolgozhatunk. Szinte
             nélkülözhetetlen API hívások esetén, amikor is JSON formátumban
-            kapjuk meg az adatokat, amiket objektumokká alakítunk. Minden
-            esetben egy új tömböt kapunk vissza.
+            kapjuk meg az adatokat, amiket objektumokká alakítunk (ezek egy tömbben vannak, így tudjuk használni a map metódust). A map()
+             egy új tömbbel tér vissza.
           </p>
           <h3 class="text-xl font-semibold">Példa:</h3>
           <div class="code-container p-4">
@@ -199,8 +199,8 @@ console.log(selectedPost);
             A pus() metódussal egy tömbhöz tudunk új elemet, illetve elemeket
             csatolni. Hasznus például egy CRUD művletnél, amikor egy meglévő
             tömböt bővítünk. Ez az elem a tömb végére kerül. A metódus
-            az eredeti tömböt módosítja, ami azt jelenti, hogy ha egy új
-            változóban definiálnánk, akkor csak a tömb hosszával térne vissza.
+            az eredeti tömböt módosítja, tehát ha egy új
+            változóban definiálnánk, akkor csak a tömb hosszát kapnánk eredményként.
           </p>
           <h3 class="text-xl font-semibold">Példa:</h3>
           <div class="code-container p-4">
